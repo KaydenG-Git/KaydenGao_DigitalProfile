@@ -2,201 +2,544 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>个人主页 | My Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Adeline · 整合营销 | 趁现在</title>
     <style>
-        /* 全局样式 */
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        * {
             margin: 0;
             padding: 0;
-            color: #333;
-            line-height: 1.6;
-            background-color: #f8f9fa;
+            box-sizing: border-box;
         }
-        header {
-            background-color: #24292e;
-            color: #fff;
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
+
+        body {
+            background-color: #FEFCF5;  /* 米白基调，像旧纸/画册质感 */
+            font-family: 'Inter', 'Helvetica Neue', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: #1F1E1A;
+            line-height: 1.45;
+            scroll-behavior: smooth;
         }
-        nav {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
+
+        /* 衬线字体用于标题/氛围感 */
+        h1, h2, h3, .serif-text, .banner-slogan, .section-title {
+            font-family: 'Cormorant Garamond', 'Times New Roman', Georgia, serif;
+            letter-spacing: -0.01em;
         }
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        nav a:hover {
-            color: #0366d6;
-        }
+
         .container {
-            max-width: 900px;
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 6rem 2rem 2rem 2rem;
+            padding: 0 32px;
         }
-        section {
-            margin-bottom: 4rem;
-            padding-top: 2rem;
+
+        /* =========  Banner 区域 (第一屏) ========= */
+        .banner {
+            min-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            padding: 60px 0 40px;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
-        h2 {
-            border-bottom: 2px solid #e1e4e8;
-            padding-bottom: 0.5rem;
-            color: #24292e;
-        }
-        
-        /* 1. 自我介绍板块 */
-        .intro-box {
+
+        /* 图片上传占位区 — 视觉上类似相框/图集区域 */
+        .image-upload-placeholder {
+            background: #E9E5DA;
+            border: 2px dashed #C7C1B0;
+            border-radius: 32px;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            max-height: 480px;
+            object-fit: cover;
             display: flex;
             align-items: center;
-            gap: 2rem;
-            margin-top: 1rem;
+            justify-content: center;
+            margin-bottom: 48px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.2s ease;
+            background-color: #F3F0E8;
         }
-        .intro-text h1 {
-            margin: 0 0 1rem 0;
-            font-size: 2.5rem;
+
+        .image-upload-placeholder .placeholder-text {
+            color: #8F897C;
+            font-family: monospace;
+            font-size: 0.9rem;
+            background: rgba(255,255,240,0.7);
+            padding: 8px 20px;
+            border-radius: 60px;
+            backdrop-filter: blur(2px);
+            pointer-events: none;
         }
-        .tag {
-            background: #e1ecf4;
-            color: #0077cc;
-            padding: 0.2rem 0.6rem;
-            border-radius: 3px;
-            font-size: 0.85rem;
-            margin-right: 0.5rem;
+
+        /* 实际图片展示时 (用户替换img后) */
+        .banner-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .banner-content {
+            text-align: center;
+            margin-top: 16px;
+        }
+
+        .badge-imc {
+            display: inline-block;
+            background: #1F1E1A;
+            color: #FEFCF5;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            padding: 6px 14px;
+            border-radius: 40px;
+            font-weight: 500;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            font-family: monospace;
+        }
+
+        .banner-slogan {
+            font-size: clamp(4rem, 12vw, 7rem);
+            font-weight: 600;
+            line-height: 1.1;
+            margin: 0.2em 0;
+            color: #1E1C17;
+            letter-spacing: 0.02em;
+            /* 毛笔笔触风格 — 使用SVG字体回滚 + 倾斜效果 模拟洒脱感 */
+            font-family: 'Kaushan Script', 'Cormorant Garamond', cursive;
+            font-weight: 700;
+            text-shadow: 2px 2px 0 rgba(0,0,0,0.02);
+        }
+
+        .banner-sub {
+            font-size: 1.2rem;
+            color: #5A5446;
+            max-width: 620px;
+            margin: 20px auto 0;
+            border-top: 1px solid #E2DDD2;
+            padding-top: 24px;
+            display: inline-block;
+            font-weight: 400;
+        }
+
+        .banner-sub span {
+            font-weight: 500;
+            color: #B15341; /* 红色系点缀 */
+        }
+
+        /* =========  Section 通用样式 ========= */
+        section {
+            padding: 90px 0;
+            border-bottom: 1px solid #EFECE5;
+        }
+
+        .section-title {
+            font-size: 2.4rem;
+            font-weight: 500;
+            letter-spacing: -0.3px;
+            margin-bottom: 48px;
+            position: relative;
             display: inline-block;
         }
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: #B15341;
+        }
 
-        /* 2. Portfolio 板块 */
-        .grid {
+        /* 个人优势 卡片布局 */
+        .advantages-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-        .card {
-            background: #fff;
-            border: 1px solid #e1e4e8;
-            border-radius: 6px;
-            padding: 1.5rem;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-            transition: transform 0.2s;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-        .card h3 {
-            margin-top: 0;
-            color: #0366d6;
-        }
-        .card a {
-            color: #0366d6;
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: bold;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin-top: 16px;
         }
 
-        /* 3. Contact Me 板块 */
-        .contact-list {
-            list-style: none;
-            padding: 0;
-            font-size: 1.1rem;
+        .adv-card {
+            background: white;
+            padding: 28px 24px;
+            border-radius: 28px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.02), 0 1px 2px rgba(0,0,0,0.05);
+            transition: transform 0.25s ease, box-shadow 0.2s;
+            border: 1px solid #F0EDE4;
         }
-        .contact-list li {
-            margin-bottom: 0.8rem;
+        .adv-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.08);
+            border-color: #DDD6CA;
         }
-        .contact-list a {
-            color: #0366d6;
+
+        .adv-card h3 {
+            font-size: 1.7rem;
+            font-weight: 500;
+            margin-bottom: 16px;
+            color: #B15341;
+            font-family: 'Cormorant Garamond', serif;
+        }
+        .adv-card p {
+            color: #3E3A32;
+            line-height: 1.5;
+        }
+        .project-highlight {
+            margin-top: 18px;
+            border-top: 1px dashed #E9E3D8;
+            padding-top: 16px;
+            font-size: 0.9rem;
+        }
+        .project-highlight strong {
+            color: #1F1E1A;
+        }
+
+        /* 方法论心得 - 5个板块网格 */
+        .methodology-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 28px;
+            margin: 40px 0 20px;
+        }
+        .method-card {
+            background: #FEFCF5;
+            border-radius: 24px;
+            padding: 24px 20px;
+            transition: all 0.2s;
+            border: 1px solid #F2EFE7;
+        }
+        .method-icon {
+            font-size: 2.2rem;
+            margin-bottom: 18px;
+            display: inline-block;
+            background: #F3EFE6;
+            padding: 8px 12px;
+            border-radius: 60px;
+            color: #B15341;
+        }
+        .method-card h4 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            font-family: 'Cormorant Garamond', serif;
+        }
+        .method-card .method-placeholder {
+            font-size: 0.85rem;
+            color: #8F897C;
+            background: #F9F7F2;
+            padding: 12px;
+            border-radius: 16px;
+            margin-top: 12px;
+            font-style: normal;
+            border-left: 2px solid #C9C0AE;
+        }
+
+        /* contact 区域 */
+        .contact-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 48px;
+            justify-content: space-between;
+            background: #FFFFFFE6;
+            padding: 40px 36px;
+            border-radius: 48px;
+            border: 1px solid #EFE9DF;
+            margin-top: 16px;
+        }
+        .contact-info {
+            flex: 1;
+            min-width: 200px;
+        }
+        .contact-item {
+            margin-bottom: 28px;
+        }
+        .contact-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #B15341;
+            font-weight: 600;
+        }
+        .contact-value {
+            font-size: 1.2rem;
+            margin-top: 6px;
+            font-weight: 500;
+            word-break: break-all;
+        }
+        .contact-value a {
+            color: #1F1E1A;
             text-decoration: none;
+            border-bottom: 1px dotted #B0A995;
+        }
+        .contact-value a:hover {
+            color: #B15341;
+            border-bottom-color: #B15341;
+        }
+        .wechat-time {
+            font-size: 0.8rem;
+            color: #6B6252;
+            margin-top: 6px;
+        }
+        .btn-resume {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #1F1E1A;
+            color: #FEFCF5;
+            padding: 14px 32px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 12px;
+            transition: all 0.25s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .btn-resume:hover {
+            background: #B15341;
+            transform: scale(0.97);
+        }
+        .resume-note {
+            font-size: 0.75rem;
+            color: #A09786;
+            margin-top: 12px;
         }
 
         footer {
             text-align: center;
-            padding: 2rem;
-            color: #586069;
-            font-size: 0.9rem;
-            border-top: 1px solid #e1e4e8;
+            padding: 40px 0 60px;
+            color: #A99F8C;
+            font-size: 0.8rem;
+        }
+
+        /* 响应式 */
+        @media (max-width: 780px) {
+            .container {
+                padding: 0 20px;
+            }
+            section {
+                padding: 64px 0;
+            }
+            .contact-wrapper {
+                padding: 28px 20px;
+            }
+            .banner-slogan {
+                font-size: 3.8rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* 毛笔字体如果本地没有则优雅降级 */
+        @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&display=swap');
+        
+        .red-dot {
+            color: #B15341;
         }
     </style>
 </head>
 <body>
+<div class="container">
+    <!-- ================= BANNER 首屏区域 ================= -->
+    <div class="banner">
+        <!-- 图片上传位置：用户可直接替换下方 img 或 背景图，这里使用带有注释的占位符 + 可替换结构 -->
+        <div class="image-upload-placeholder" id="bannerImageSlot">
+            <!-- ********** 上传您的 Banner 图片 ********** -->
+            <!-- 请将下方 img 标签的 src 替换成您的图片路径；或保留此占位样式，直接替换图片地址 -->
+            <img class="banner-img" src="https://placehold.co/1600x900/F3EFE8/C7BEA9?text=📸+Upload+Your+Banner+Image" alt="Banner 占位图" style="width:100%; height:100%; object-fit:cover;" onerror="this.src='https://placehold.co/1600x900/F3EFE8/C7BEA9?text=IMC+Vision'">
+            <!-- 注释：把上方 src 替换为你自己的图片链接（本地或线上），推荐尺寸 1600*900 左右 -->
+        </div>
+        <div class="banner-content">
+            <div class="badge-imc">INTEGRATED MARKETING · IMC</div>
+            <!-- 毛笔洒脱字体风格 slogan：“趁现在” -->
+            <div class="banner-slogan">趁现在</div>
+            <div class="banner-sub">
+                从<span>技术语言</span>到消费者心智 · 新品上市策略驱动增长<br>
+                整合营销全域操盘手 | 留下深刻第一印象
+            </div>
+        </div>
+    </div>
 
-    <!-- 导航栏 -->
-    <header>
-        <nav>
-            <a href="#about">关于我</a>
-            <a href="#portfolio">项目作品</a>
-            <a href="#contact">联系我</a>
-        </nav>
-    </header>
+    <!-- ********** 板块1：个人优势 ********** -->
+    <section>
+        <h2 class="section-title">个人优势</h2>
+        <div class="advantages-grid">
+            <!-- 卡片1：新品发布全案经验 -->
+            <div class="adv-card">
+                <h3>3+ 旗舰新品<br>整合营销项目</h3>
+                <p>从产品定义到上市爆发，操盘moto & 拯救者系列重要战役，具备0-1新品GTM与整合传播能力。</p>
+                <div class="project-highlight">
+                    <strong>◆ moto razr 60 小折叠系列</strong> —— 【待补充：营销亮点/声量成果】<br>
+                    <strong>◆ moto X70 Air 系列</strong> —— 【待补充：影像心智突破】<br>
+                    <strong>◆ moto razr fold 大折叠 & 拯救者Y70新一代</strong> —— 【待补充：全渠道整合案例】
+                </div>
+            </div>
+            <!-- 卡片2：跨品类整合营销能力 -->
+            <div class="adv-card">
+                <h3>全域整合视角</h3>
+                <p>擅长串联产品、品牌、媒介与电商，打造品效协同的IMC闭环。从预热到续销，用整合思维放大新品势能。</p>
+                <div class="project-highlight">
+                    ⚡ 成功构建“发布会-种草-转化”链路，多次刷新品类声量峰值。
+                </div>
+            </div>
+            <!-- 卡片3：数据驱动+用户洞察 -->
+            <div class="adv-card">
+                <h3>用户洞察 × 策略落地</h3>
+                <p>结合消费电子人群分层与场景痛点，将技术参数转化为购买理由。驱动跨部门协作快速迭代。</p>
+                <div class="project-highlight">
+                    📊 用户洞察机制指导内容生产，年度核心物料ROI提升35%+（示意待补充）
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <div class="container">
-        
-        <!-- SECTION 1: 自我介绍 -->
-        <section id="about">
-            <div class="intro-box">
-                <div class="intro-text">
-                    <h1>你好，我是 [你的名字] 👋</h1>
-                    <p style="font-size: 1.2rem; color: #586069;">[你的职业定位/如：全栈开发工程师 / 数据分析师 / 产品经理]</p>
-                    <p>这里写一段精炼的自我介绍。突出你的核心竞争力、技术栈以及你对工作的热情。让 HR 或技术面试官在 10 秒内了解你的优势。</p>
-                    <div style="margin-top: 1rem;">
-                        <span class="tag">JavaScript</span>
-                        <span class="tag">Python</span>
-                        <span class="tag">React</span>
-                        <span class="tag">SQL</span> <!-- 替换成你自己的技术栈 -->
+    <!-- ********** 板块2：项目经历 / 方法论心得（5大模块） ********** -->
+    <section>
+        <h2 class="section-title">方法论心得 · 项目引擎</h2>
+        <div class="methodology-grid">
+            <!-- ① 技术语言 → 消费者可知可感的卖点转译 -->
+            <div class="method-card">
+                <div class="method-icon">🗣️→💡</div>
+                <h4>卖点转译</h4>
+                <p>从参数到价值语言体系</p>
+                <div class="method-placeholder">
+                    【待补充：你的方法论案例】<br>
+                    例：将折叠屏铰链技术转译成“掌心仪式感”，把芯片算力转化为“创作不设限”。
+                </div>
+            </div>
+            <!-- ② 新品策略推导 -->
+            <div class="method-card">
+                <div class="method-icon">📌</div>
+                <h4>新品策略推导</h4>
+                <p>竞争格局 / 差异化定位</p>
+                <div class="method-placeholder">
+                    【待补充：策略推导框架】<br>
+                    基于赛道分析、对手动向及用户预期，锚定核心击穿点，输出上市策略屋。
+                </div>
+            </div>
+            <!-- ③ 用户洞察机制 -->
+            <div class="method-card">
+                <div class="method-icon">🔍</div>
+                <h4>用户洞察机制</h4>
+                <p>定性深访 / 社媒聆听 / 搜索行为</p>
+                <div class="method-placeholder">
+                    【待补充：洞察驱动案例】<br>
+                    如针对moto razr用户“轻奢悦己”标签，重塑沟通语境。
+                </div>
+            </div>
+            <!-- ④ 核心物料制作 -->
+            <div class="method-card">
+                <div class="method-icon">🎬</div>
+                <h4>核心物料制作</h4>
+                <p>KV · 视频 · 产品卖点可视化</p>
+                <div class="method-placeholder">
+                    【待补充：物料体系】<br>
+                    从产品棚拍到病毒视频，把控美学统一性及传播效率。
+                </div>
+            </div>
+            <!-- ⑤ 阵地运营 -->
+            <div class="method-card">
+                <div class="method-icon">🌐</div>
+                <h4>阵地运营</h4>
+                <p>双微/抖音/官网/私域协同</p>
+                <div class="method-placeholder">
+                    【待补充：整合运营策略】<br>
+                    品效协同，构建新品热度从公域到私域的沉淀闭环。
+                </div>
+            </div>
+        </div>
+        <!-- 额外显示项目经历中的更多说明 (可选择)-->
+        <div style="margin-top: 28px; background: #F9F7F0; border-radius: 28px; padding: 16px 24px; border-left: 4px solid #B15341;">
+            <p style="font-size: 0.85rem; color:#4A4236;">📌 整合营销代表作：<strong>moto razr 60系列</strong>「折叠新生·大开想象」整合战役 / <strong>拯救者Y70</strong> 硬核生态发布会 —— 从策略到落地完整操盘（更多细节待补充）</p>
+        </div>
+    </section>
+
+    <!-- ********** 板块3：Contact Me ********** -->
+    <section style="border-bottom: none;">
+        <h2 class="section-title">Contact Me</h2>
+        <div class="contact-wrapper">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-label">📧 邮箱</div>
+                    <div class="contact-value">
+                        <a href="mailto:morning_kayden@163.com">morning_kayden@163.com</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-label">💬 微信 (优先联系)</div>
+                    <div class="contact-value">mochi11mochi</div>
+                    <div class="wechat-time">✨ 最佳联系时间：工作日 10:00 – 19:00 (周末回复稍缓，欢迎留言)</div>
+                </div>
+            </div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-label">📄 简历下载</div>
+                    <!-- 简历下载按钮：预留pdf路径，标注替换说明 -->
+                    <a href="#" id="resumeDownloadBtn" class="btn-resume" download>
+                        📎 下载简历 (PDF)
+                    </a>
+                    <div class="resume-note">
+                        ※ 点击下载简历，请将你的简历文件命名为 <strong>“Adeline_Resume.pdf”</strong> 并放置于同目录，<br>
+                        或修改下方JS中的路径。 当前预留demo示意。
                     </div>
                 </div>
             </div>
-        </section>
-
-        <!-- SECTION 2: Portfolio -->
-        <section id="portfolio">
-            <h2>项目作品 (Portfolio)</h2>
-            <div class="grid">
-                <!-- 项目卡片 1 -->
-                <div class="card">
-                    <h3>🚀 项目名称 A</h3>
-                    <p>简短描述这个项目是做什么的，解决了什么痛点。使用了什么核心技术（如 Vue + Node.js）。</p>
-                    <a href="#" target="_blank">查看代码/在线演示 →</a>
-                </div>
-                <!-- 项目卡片 2 -->
-                <div class="card">
-                    <h3>📊 项目名称 B</h3>
-                    <p>描述第二个项目的亮点，比如你在项目中负责的具体核心模块，或者达成的性能优化成果。</p>
-                    <a href="#" target="_blank">查看代码/在线演示 →</a>
-                </div>
-                <!-- 项目卡片 3 -->
-                <div class="card">
-                    <h3>🛠️ 项目名称 C</h3>
-                    <p>可以是你的个人开源小工具、或者商业项目的脱敏复刻版，展示你的独立开发或解决复杂问题的能力。</p>
-                    <a href="#" target="_blank">查看代码/在线演示 →</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION 3: Contact Me -->
-        <section id="contact">
-            <h2>联系我 (Contact Me)</h2>
-            <p>目前正在积极寻找相关工作机会，欢迎通过以下方式与我联系，或获取我的完整 PDF 简历。</p>
-            <ul class="contact-list">
-                <li>📧 <strong>电子邮箱：</strong> <a href="mailto:your-email@example.com">your-email@example.com</a></li>
-                <li>🔗 <strong>LinkedIn：</strong> <a href="https://linkedin.com/in/yourprofile" target="_blank">linkedin.com/in/yourprofile</a></li>
-                <li>💻 <strong>GitHub：</strong> <a href="https://github.com/你的用户名" target="_blank">github.com/你的用户名</a></li>
-                <li>📄 <strong>完整简历：</strong> <a href="#" target="_blank">点击下载我的 PDF 简历</a></li>
-            </ul>
-        </section>
-
-    </div>
+        </div>
+        <!-- 额外说明红色点缀色块已在各处呈现 -->
+    </section>
 
     <footer>
-        <p>© 2026 由 [你的名字] 独立设计与开发 | 基于 GitHub Pages 托管</p>
+        <p>© 2024 Adeline Palmerston · IMC整合营销 | 趁现在 创造记忆</p>
+        <p style="margin-top: 8px;">#从技术语言到消费者心智</p>
     </footer>
+</div>
+
+<script>
+    // 平滑滚动 (所有内部锚点支持，但页面本身没有跳转需求，保留优雅)
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+
+    // 简历下载功能: 用户可替换为自己真实简历PDF路径 (目前先给出提示和可配置)
+    const resumeBtn = document.getElementById('resumeDownloadBtn');
+    // ********** 请在这里修改为你的简历文件路径 ********** 
+    const RESUME_PATH = './Adeline_Resume.pdf';  // 请替换为真实简历路径, 例如 "files/my_resume.pdf"
+    
+    resumeBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        // 创建一个隐藏链接尝试触发下载，如果文件不存在则提醒
+        const link = document.createElement('a');
+        link.href = RESUME_PATH;
+        link.download = 'Adeline_IMC_Resume.pdf';   // 下载文件名
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        // 提示信息：如果文件未准备好，用户会收到浏览器错误，友好提示
+        setTimeout(() => {
+            console.log("如果简历未成功下载，请确保路径正确并放置简历PDF");
+        }, 100);
+    });
+
+    // Banner 图片占位替换指引 (控制台或hover提示)
+    const bannerSlot = document.getElementById('bannerImageSlot');
+    if(bannerSlot) {
+        // 添加额外备注，方便用户理解替换位置
+        const existingImg = bannerSlot.querySelector('img');
+        if(existingImg && existingImg.src.includes('placehold')) {
+            // 不作强制，只是提示
+            console.log("✨ 请将Banner图片替换至 .banner-img 的src 属性，例如更换为你的图片链接");
+        }
+    }
+</script>
 
 </body>
 </html>

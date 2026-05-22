@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>产品营销个人作品集 | Portfolio</title>
+    <title>高玮苹 Kayden | 产品营销个人作品集</title>
     <style>
         /* ==========================================================================
            视觉风格参考：摄影作品集感、高级留白、柔和中性色调、现代衬线与无衬线搭配
@@ -12,8 +12,8 @@
             --bg-color: #f4f0eb;        /* 柔和的大地色/米杏色底色 */
             --text-main: #1a1a1a;       /* 深碳灰接近纯黑，保持高质感 */
             --text-muted: #605b56;      /* 灰褐色，用于次要说明与留白流动 */
-            --accent-red: #b93826;      /* 复古高级深红（致敬原图PORTFOLIO字样颜色） */
-            --card-bg: #faf8f5;         /* 卡片稍微亮一些的米白色 */
+            --accent-red: #b93826;      /* 复古高级深红 */
+            --card-bg: #faf8f5;         /* 卡片亮米白色 */
             --border-color: #dcd6cd;    /* 淡淡的泥土灰边框线 */
             --font-serif: "Times New Roman", "Playfair Display", "Noto Serif CJK SC", serif;
             --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans CJK SC", sans-serif;
@@ -37,7 +37,7 @@
             padding-bottom: 60px;
         }
 
-        /* 顶部紧凑型导航栏 */
+        /* 顶部导航栏 */
         header {
             position: fixed;
             top: 0;
@@ -60,11 +60,10 @@
 
         .logo {
             font-family: var(--font-serif);
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             font-weight: 700;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             color: var(--accent-red);
-            text-transform: uppercase;
         }
 
         nav a {
@@ -80,7 +79,7 @@
             color: var(--accent-red);
         }
 
-        /* 第一屏：大 Banner 视觉流 */
+        /* 第一屏：Banner */
         .hero-section {
             padding-top: 100px;
             max-width: 1200px;
@@ -120,7 +119,6 @@
             padding-bottom: 0.5rem;
         }
 
-        /* Banner 图片放置区域 */
         .hero-banner-image-wrapper {
             width: 100%;
             height: 480px;
@@ -137,7 +135,6 @@
             display: block;
         }
 
-        /* Slogan 条 */
         .hero-meta-bar {
             display: flex;
             flex-wrap: wrap;
@@ -200,10 +197,10 @@
             background-color: var(--accent-red);
         }
 
-        /* 板块1：个人优势网格 */
+        /* 项目介绍网格 */
         .advantages-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2.5rem;
         }
 
@@ -213,6 +210,8 @@
             padding: 2.5rem 2rem;
             position: relative;
             transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
         }
 
         .adv-card:hover {
@@ -243,18 +242,28 @@
             font-size: 0.95rem;
             color: var(--text-muted);
             margin-bottom: 1.5rem;
+            min-height: 3em;
         }
 
-        .adv-status-placeholder {
-            font-size: 0.85rem;
-            color: #c48277;
-            background-color: rgba(185, 56, 38, 0.05);
-            padding: 0.5rem 0.8rem;
+        .adv-strategy {
+            font-size: 0.88rem;
+            color: #4a4540;
+            background-color: rgba(185, 56, 38, 0.04);
+            padding: 1.2rem;
             border-left: 2px solid var(--accent-red);
-            font-style: italic;
+            line-height: 1.6;
+            flex-grow: 1;
         }
 
-        /* 板块2：项目经历 / 方法论心得 */
+        .strategy-pill-title {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+            color: var(--accent-red);
+            font-size: 0.95rem;
+        }
+
+        /* 方法论 */
         .methodology-list {
             display: flex;
             flex-direction: column;
@@ -267,10 +276,6 @@
             display: grid;
             grid-template-columns: 80px 1fr;
             transition: border-color 0.3s;
-        }
-
-        .method-item:hover {
-            border-color: var(--text-main);
         }
 
         .method-index {
@@ -292,9 +297,6 @@
             font-size: 1.25rem;
             font-weight: 600;
             margin-bottom: 0.8rem;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
         }
 
         .method-placeholder {
@@ -306,17 +308,11 @@
             font-style: italic;
         }
 
-        @media (max-width: 640px) {
-            .method-item { grid-template-columns: 1fr; }
-            .method-index { padding: 1rem 0; height: 50px; font-size: 1.4rem; }
-        }
-
-        /* 板块3：Contact Me */
+        /* 联系方式 */
         .contact-wrapper {
             background-color: var(--text-main);
             color: var(--bg-color);
             padding: 4rem 3rem;
-            border-radius: 0px; 
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 3rem;
@@ -327,13 +323,6 @@
             font-size: 2.2rem;
             font-weight: 400;
             margin-bottom: 1.5rem;
-            letter-spacing: 1px;
-        }
-
-        .contact-left p {
-            color: #b5b0aa;
-            max-width: 400px;
-            font-size: 0.95rem;
         }
 
         .contact-right {
@@ -357,20 +346,13 @@
         }
 
         .contact-value {
-            font-size: 1.2rem;
-            font-weight: 400;
+            font-size: 1.15rem;
         }
 
         .contact-value a {
             color: var(--bg-color);
             text-decoration: none;
             border-bottom: 1px solid rgba(244, 240, 235, 0.4);
-            transition: all 0.3s;
-        }
-
-        .contact-value a:hover {
-            color: var(--accent-red);
-            border-bottom-color: var(--accent-red);
         }
 
         .resume-btn {
@@ -385,20 +367,17 @@
             text-transform: uppercase;
             font-size: 0.9rem;
             transition: all 0.3s;
-            border: 1px solid transparent;
             margin-top: 0.5rem;
         }
 
         .resume-btn:hover {
             background-color: var(--text-main);
             color: var(--bg-color);
-            border-color: var(--bg-color);
-            transform: scale(1.02);
+            border: 1px solid var(--bg-color);
         }
 
         @media (max-width: 768px) {
-            .contact-wrapper { grid-template-columns: 1fr; gap: 2rem; padding: 2.5rem 1.5rem; }
-            .contact-left h3 { font-size: 1.8rem; }
+            .contact-wrapper { grid-template-columns: 1fr; padding: 2.5rem 1.5rem; }
         }
 
         footer {
@@ -415,9 +394,9 @@
 
     <header>
         <div class="nav-container">
-            <div class="logo">IMC PORTFOLIO</div>
+            <div class="logo">高玮苹 Kayden</div>
             <nav>
-                <a href="#advantages">个人优势</a>
+                <a href="#advantages">项目介绍</a>
                 <a href="#methodology">方法论心得</a>
                 <a href="#contact">联系我</a>
             </nav>
@@ -431,12 +410,12 @@
         </div>
         
         <div class="hero-banner-image-wrapper">
-            <img src="banner2.jpg" alt="IMC Integration Marketing Banner" id="bannerImg">
+            <img src="banner2.jpg" alt="Kayden Product Marketing Portfolio Banner" id="bannerImg">
         </div>
 
         <div class="hero-meta-bar">
             <div class="hero-role">
-                <strong style="font-size: 1.8rem; display: block; margin-bottom: 0.3rem;">Product Marketing specialist 产品营销主管</strong>
+                <strong style="font-size: 1.8rem; display: block; margin-bottom: 0.3rem;">Product Marketing Senior Specialist 产品营销主管</strong>
                 <span style="color: var(--text-muted); font-size: 1rem;">专注于新品上市策略 | 产品卖点转译 | IMC整合营销</span>
             </div>
             <div class="hero-slogan">“ 从技术语言到消费者心智 ”</div>
@@ -447,9 +426,9 @@
     <div class="main-container">
 
         <section id="advantages">
-            <h2 class="section-header">个人优势与核心操盘</h2>
+            <h2 class="section-header">个人优势及项目介绍</h2>
             <p style="color: var(--text-muted); margin-bottom: 2.5rem; max-width: 700px;">
-                深耕智能硬件与科技品牌发布，专注于将复杂的硬核技术重构为击中用户痛点的市场语言。以下为操盘的新品发布整合营销核心项目：
+                专注于智能硬件领域的新品发布整合营销，核心能力在于将硬核技术重构为高效的市场沟通语言。以下为操盘的核心项目，均以实现业务增长与用户共鸣为目标：
             </p>
 
             <div class="advantages-grid">
@@ -457,26 +436,37 @@
                     <span class="adv-tag">Project 01</span>
                     <h3 class="adv-title">moto razr 60 小折叠系列</h3>
                     <div class="adv-desc">主打时尚单品与小巧折叠的科技美学定位，深度渗透泛女性与潮流圈层。</div>
-                    <div class="adv-status-placeholder">
-                        【待补充】：此处填写该营销亮点。例如：“通过精准KOL矩阵爆破与线下跨界快闪，实现全网曝光量破X亿，成功破圈女性受众，女性购买用户占比提升X%。”
+                    <div class="adv-strategy">
+                        <span class="strategy-pill-title">策略核心：3-6K价位段“个性彰显”</span>
+                        以“个性彰显”为核心策略，精准分层触达不同能力的女性客群。围绕“超合拍”心智构建三大支柱：<br>
+                        <strong>① 时尚单品：</strong>打造“OOTD超合拍”，绑定高频穿搭场景；<br>
+                        <strong>② 影像神器：</strong>首发外屏主摄手势功能，定义“合拍”新玩法；<br>
+                        <strong>③ 品质信任：</strong>强化“耐用超合拍”口碑，有效降低决策顾虑。<br>
+                        实现从颜值吸引、功能种草到信任转化的完整链路。
                     </div>
                 </div>
 
                 <div class="adv-card">
                     <span class="adv-tag">Project 02</span>
                     <h3 class="adv-title">moto X70 Air 系列</h3>
-                    <div class="adv-desc">对标同期苹果&荣耀air定位机型，主打极致轻薄不妥协的直板旗舰，精准锚定新中产与职场精英的核心诉求。</div>
-                    <div class="adv-status-placeholder">
-                        “推导‘轻装出发’核心策略，打造系列场景化短片与不妥协的续航、影像深度测评，用户搜索U1打超目标+150%，近2年首发销量最好的直板。”
+                    <div class="adv-desc">对标苹果/荣耀Air机型，主打“极致轻薄不妥协”的直板旗舰，锚定新中产职场精英。</div>
+                    <div class="adv-strategy">
+                        <span class="strategy-pill-title">策略核心：高端认知的“轻量化”转译</span>
+                        <strong>① 差异化定位：</strong>推导“轻装出发”核心策略，将轻薄与高效率办公深度绑定；<br>
+                        <strong>② 认知破局：</strong>打造系列场景短片，通过硬核测评破解用户对轻薄机型续航/影像的担忧点；<br>
+                        <strong>③ 业务价值：</strong>用户搜索U1打超目标150%，成为近两年首发销量表现最佳的直板机型。
                     </div>
                 </div>
 
                 <div class="adv-card">
                     <span class="adv-tag">Project 03</span>
-                    <h3 class="adv-title">moto razr fold 大折叠 / 拯救者 Y70 新一代</h3>
-                    <div class="adv-desc">面向重度科技极客与电竞玩家，主打拯救者生态闭环及唯一提供串流端游解决方案的电竞手机。</div>
-                    <div class="adv-status-placeholder">
-                        联动LGTI游戏小程序，推出先行者用户体验计划，重点触达电竞圈层及拯救者PC粉丝30万人，社群裂变迅速蓄水6000人。
+                    <h3 class="adv-title">moto razr fold / 拯救者 Y70 系列</h3>
+                    <div class="adv-desc">面向科技极客与电竞玩家，主打拯救者生态闭环及端游级串流方案。</div>
+                    <div class="adv-strategy">
+                        <span class="strategy-pill-title">策略核心：存量粉丝的“生态共振”</span>
+                        <strong>① 精准触达：</strong>联动LGTI游戏小程序，推出“先行者”体验计划，低成本激活高质量种子用户；<br>
+                        <strong>② 圈层渗透：</strong>深度经营拯救者PC粉丝群，触达核心电竞受众30万+，将 PC 品牌忠诚度平移至手机；<br>
+                        <strong>③ 社群裂变：</strong>迅速完成 6000 人核心私域蓄水，实现从流量触达到业务转化的快速闭环。
                     </div>
                 </div>
             </div>
@@ -485,19 +475,14 @@
 
         <section id="methodology">
             <h2 class="section-header">项目经历与方法论心得</h2>
-            <p style="color: var(--text-muted); margin-bottom: 2.5rem; max-width: 700px;">
-                在多款手机新品全周期发布中沉淀的成熟闭环打法，确保每一次营销动作都具备强推导逻辑与可衡量的转化结果。
-            </p>
-
             <div class="methodology-list">
-                
                 <div class="method-item">
                     <div class="method-index">01</div>
                     <div class="method-content">
                         <div class="method-title">✨ 技术语言 → 消费者可知可感的卖点转译</div>
-                        <p style="font-size: 0.95rem; font-weight: 500;">拒绝生硬的参数堆砌，提炼技术背后对用户生活、工作场景的真实体验改良。</p>
+                        <p style="font-size: 0.95rem; font-weight: 500;">拒绝生硬参数，提炼技术背后的真实体验改良。</p>
                         <div class="method-placeholder">
-                            在moto razr 60发布中，将“3个五千万像素+1个广角镜头+手势抓拍”成功转译为“AI自由，超合拍”的场景故事和实况Magic Moment。
+                            在razr 60发布中，将“主摄手势抓拍”转译为“AI自由，超合拍”的情感化场景。
                         </div>
                     </div>
                 </div>
@@ -506,9 +491,9 @@
                     <div class="method-index">02</div>
                     <div class="method-content">
                         <div class="method-title">🎯 新品策略推导</div>
-                        <p style="font-size: 0.95rem; font-weight: 500;">从宏观行业大盘、竞品定位死角中寻找破局点，制定具备差异化的上市节奏与发声主线。</p>
+                        <p style="font-size: 0.95rem; font-weight: 500;">从行业大盘与竞品死角寻找破局点。</p>
                         <div class="method-placeholder">
-                            基于复杂竞争环境，主导三阶段蓄水打法（悬念-爆破-长尾），精准卡位核心认知空档。
+                            主导三阶段蓄水打法（悬念-爆破-长尾），精准卡位核心认知空档。
                         </div>
                     </div>
                 </div>
@@ -517,9 +502,9 @@
                     <div class="method-index">03</div>
                     <div class="method-content">
                         <div class="method-title">🔍 用户洞察机制</div>
-                        <p style="font-size: 0.95rem; font-weight: 500;">结合定量大数据画像与定性社群访谈，拒绝自嗨，捕捉用户的痛点与情感共鸣点。</p>
+                        <p style="font-size: 0.95rem; font-weight: 500;">结合大数据与深访，捕捉真实痛点。</p>
                         <div class="method-placeholder">
-                            通过长期用户原声跟踪，发现目标人群对大折叠续航隐忧，从而在内容策略上侧重“全天续航无焦虑”实测。
+                            通过原声跟踪发现大折叠续航隐忧，针对性开展“全天续航无焦虑”实测。
                         </div>
                     </div>
                 </div>
@@ -528,9 +513,9 @@
                     <div class="method-index">04</div>
                     <div class="method-content">
                         <div class="method-title">🎬 核心物料制作</div>
-                        <p style="font-size: 0.95rem; font-weight: 500;">把控TVC、概念海报、产品KV的视觉及文本调性，确保高质感的美学表达与卖点强绑定。</p>
+                        <p style="font-size: 0.95rem; font-weight: 500;">培养in-house团队，把控全局美学调性。</p>
                         <div class="method-placeholder">
-                            搭建及培养inhouse创意团队，确保各轮新品发布核心物料对卖点人群场景的精准呈现及产出效率，确保全渠道物料美学高度一致。
+                            建立高效产出机制，确保全渠道物料从KV到短视频的视觉一致性。
                         </div>
                     </div>
                 </div>
@@ -539,13 +524,12 @@
                     <div class="method-index">05</div>
                     <div class="method-content">
                         <div class="method-title">📱 阵地运营</div>
-                        <p style="font-size: 0.95rem; font-weight: 500;">小红书爆款种草、抖音效果承接、B站硬核解构、微信私域全阵地共振，实现声量向销量的全链路跨越。</p>
+                        <p style="font-size: 0.95rem; font-weight: 500;">多位一体矩阵协同，实现全链路跨越。</p>
                         <div class="method-placeholder">
-                            根据各媒介平台特性拆分物料形态，形成不同层级、多位一体的矩阵协同效应。
+                            根据平台特性（小红书种草/B站解构）拆解形态，确保品效合一。
                         </div>
                     </div>
                 </div>
-
             </div>
         </section>
 
@@ -554,8 +538,8 @@
             <div class="contact-wrapper">
                 <div class="contact-left">
                     <h3>Let's Connect.</h3>
-                    <p>目前正在积极寻找全新的整合营销（IMC）相关工作机会。</p>
-                    <p style="margin-top: 1rem;">如果您对我操盘的项目经验或推导方法论感兴趣，欢迎通过右侧形式随时建立联系，或直接阅读、下载我的简历。</p>
+                    <p>目前正在积极寻找全新的产品营销 / 整合营销（IMC）相关工作机会。</p>
+                    <p style="margin-top: 1rem;">如果您对我操盘的项目经验或推导方法论感兴趣，欢迎通过右侧建立联系。</p>
                 </div>
                 
                 <div class="contact-right">
@@ -566,7 +550,7 @@
 
                     <div class="contact-info-item">
                         <span class="contact-label">WeChat / Available Time</span>
-                        <span class="contact-value" style="color: var(--bg-color);">WeChatID_mochi11mochi <small style="color: #8e8983; margin-left: 0.5rem;">( 工作日 10:00 - 19:00 )</small></span>
+                        <span class="contact-value" style="color: var(--bg-color);">mochi11mochi / 10:00-19:00，优先微信联系</span>
                     </div>
 
                     <div class="contact-info-item">
@@ -580,13 +564,8 @@
     </div>
 
     <footer>
-        <p>© 2026 Portfolio. Designed for Studio Aesthetic. Powered by GitHub Pages.</p>
+        <p>© 2026 Portfolio. Designed by Kayden. Powered by GitHub Pages.</p>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            console.log("IMC Portfolio template successfully loaded.");
-        });
-    </script>
 </body>
 </html>

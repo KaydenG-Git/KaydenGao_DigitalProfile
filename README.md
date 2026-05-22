@@ -1,2 +1,203 @@
 # KaydenGao_DigitalProfile
 Hiiiii, WELCOME to my channel :p
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人主页 | My Portfolio</title>
+    <style>
+        /* 全局样式 */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            line-height: 1.6;
+            background-color: #f8f9fa;
+        }
+        header {
+            background-color: #24292e;
+            color: #fff;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            color: #0366d6;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 6rem 2rem 2rem 2rem;
+        }
+        section {
+            margin-bottom: 4rem;
+            padding-top: 2rem;
+        }
+        h2 {
+            border-bottom: 2px solid #e1e4e8;
+            padding-bottom: 0.5rem;
+            color: #24292e;
+        }
+        
+        /* 1. 自我介绍板块 */
+        .intro-box {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+        .intro-text h1 {
+            margin: 0 0 1rem 0;
+            font-size: 2.5rem;
+        }
+        .tag {
+            background: #e1ecf4;
+            color: #0077cc;
+            padding: 0.2rem 0.6rem;
+            border-radius: 3px;
+            font-size: 0.85rem;
+            margin-right: 0.5rem;
+            display: inline-block;
+        }
+
+        /* 2. Portfolio 板块 */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .card {
+            background: #fff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .card h3 {
+            margin-top: 0;
+            color: #0366d6;
+        }
+        .card a {
+            color: #0366d6;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        /* 3. Contact Me 板块 */
+        .contact-list {
+            list-style: none;
+            padding: 0;
+            font-size: 1.1rem;
+        }
+        .contact-list li {
+            margin-bottom: 0.8rem;
+        }
+        .contact-list a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #586069;
+            font-size: 0.9rem;
+            border-top: 1px solid #e1e4e8;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 导航栏 -->
+    <header>
+        <nav>
+            <a href="#about">关于我</a>
+            <a href="#portfolio">项目作品</a>
+            <a href="#contact">联系我</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        
+        <!-- SECTION 1: 自我介绍 -->
+        <section id="about">
+            <div class="intro-box">
+                <div class="intro-text">
+                    <h1>你好，我是 [高玮苹Kayden] 👋</h1>
+                    <p style="font-size: 1.2rem; color: #586069;">[产品营销IMC]</p>
+                    <p> 白羊座ENFJ！我是专注于数码品类的产品营销人，核心能力是把产品技术语言‘翻译’成打动市场的沟通方案。从市场调研、USP策略到上市落地，我操盘过联想moto razr fold、X70 Air Pro及天禧4.0等关键项目，多款新品首发销量达成或超越目标。具备从0到1的市场洞察力与跨部门推进力，对创造让用户兴奋的产品沟通充满热情。</p>
+                    <div style="margin-top: 1rem;">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">React</span>
+                        <span class="tag">SQL</span> <!-- 替换成你自己的技术栈 -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: Portfolio -->
+        <section id="portfolio">
+            <h2>项目作品 (Portfolio)</h2>
+            <div class="grid">
+                <!-- 项目卡片 1 -->
+                <div class="card">
+                    <h3>🚀 项目名称 A</h3>
+                    <p>简短描述这个项目是做什么的，解决了什么痛点。使用了什么核心技术（如 Vue + Node.js）。</p>
+                    <a href="#" target="_blank">查看代码/在线演示 →</a>
+                </div>
+                <!-- 项目卡片 2 -->
+                <div class="card">
+                    <h3>📊 项目名称 B</h3>
+                    <p>描述第二个项目的亮点，比如你在项目中负责的具体核心模块，或者达成的性能优化成果。</p>
+                    <a href="#" target="_blank">查看代码/在线演示 →</a>
+                </div>
+                <!-- 项目卡片 3 -->
+                <div class="card">
+                    <h3>🛠️ 项目名称 C</h3>
+                    <p>可以是你的个人开源小工具、或者商业项目的脱敏复刻版，展示你的独立开发或解决复杂问题的能力。</p>
+                    <a href="#" target="_blank">查看代码/在线演示 →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: Contact Me -->
+        <section id="contact">
+            <h2>联系我 (Contact Me)</h2>
+            <p>目前正在积极寻找相关工作机会，欢迎通过以下方式与我联系，或获取我的完整 PDF 简历。</p>
+            <ul class="contact-list">
+                <li>📧 <strong>电子邮箱：</strong> <a href="mailto:morning_kayden@163.com ">morning_kayden@163.com </a></li>
+                <li>🔗 <strong>电话号码：</strong> <a href="tel:15600990380"></a></li>
+                <li>📄 <strong>完整简历：</strong> <a href="#" target="_blank">点击下载我的 PDF 简历</a></li>
+            </ul>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>© 2026 由 [Kayden Gao] 独立设计与开发 | 基于 GitHub Pages 托管</p>
+    </footer>
+
+</body>
+</html>

@@ -173,6 +173,62 @@
             text-align: right;
             line-height: 1.4;
         }
+        /* ==========================================================================
+           新板块：About Me 样式
+           ========================================================================== */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .about-photo-wrapper {
+            width: 100%;
+            aspect-ratio: 1/1.2;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-photo-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .about-list li {
+            font-size: 1.1rem;
+            color: var(--text-main);
+            margin-bottom: 1.8rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            line-height: 1.6;
+        }
+
+        .about-list li strong {
+            font-weight: 600;
+            color: var(--accent-red);
+        }
+
+        @media (max-width: 768px) {
+            .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .hero-meta-bar { flex-direction: column; align-items: flex-start; }
+            .hero-slogan { text-align: left; font-size: 1.4rem; }
+            .hero-banner-image-wrapper { height: 300px; }
+        }
 
         @media (max-width: 768px) {
             .hero-meta-bar { flex-direction: column; align-items: flex-start; }
@@ -477,6 +533,28 @@
 
     <div class="main-container">
 
+        <section id="about">
+            <h2 class="section-header">About Me!</h2>
+            <div class="about-grid">
+                <div class="about-photo-wrapper">
+                    <img src="Kayden个人照片01.jpg" alt="Kayden's Life" id="aboutPhoto">
+                    <div style="position:absolute; color:rgba(0,0,0,0.2); font-size:0.8rem; text-align:center; padding:1rem; pointer-events:none;">
+                    </div>
+                </div>
+                <div class="about-content">
+                    <ul class="about-list">
+                        <li><span>📍</span> 广东江门人，自大学起北漂有11个年头了🍁最喜欢的是北京的秋天</li>
+                        <li><span>🎓</span> 本科就读于<strong>北京语言大学</strong>汉语言文学，硕士就读于<strong>墨尔本大学</strong>文化艺术管理</li>
+                        <li><span>💼</span> <strong>联想就职4年</strong>，C端数码消费，产品营销方向管培生</li>
+                        <li><span>🎾</span> 家有五猫，喜欢F1 & 游泳 & 网球🐱🎾🚗</li>
+                    </ul>
+                    <p style="font-family: var(--font-serif); font-style: italic; color: var(--text-muted); margin-top: 1rem;">
+                        “在理性的产品推导中，寻找感性的人文表达。”
+                    </p>
+                </div>
+            </div>
+        </section>
+
         <section id="advantages">
             <h2 class="section-header">个人优势及项目介绍</h2>
             <p style="color: var(--text-muted); margin-bottom: 2.5rem; max-width: 700px;">
@@ -489,8 +567,8 @@
                     <h3 class="adv-title">moto razr 60 小折叠系列</h3>
                     <div class="adv-desc">主打时尚单品与小巧折叠的科技美学定位，深度渗透泛女性与潮流圈层。</div>
                     <div class="adv-strategy">
-                        <span class="strategy-pill-title">策略核心：3-6K价位段“个性彰显”</span>
-                        以“个性彰显”为核心策略，精准分层触达不同能力的女性客群。围绕“超合拍”心智构建三大支柱：<br>
+                        <span class="strategy-pill-title">策略核心：以场景附加价值驱动消费</span>
+                        以“个性彰显”为核心，分层触达不同消费能力的女性客群。围绕“超合拍”心智构建三大支柱：<br>
                         <strong>① 时尚单品：</strong>打造“OOTD超合拍”，绑定高频穿搭场景；<br>
                         <strong>② 合拍神器：</strong>外屏主摄广角手势自拍，定义“合拍”新玩法；<br>
                         <strong>③ 品质信任：</strong>强化“耐用超合拍”口碑，有效降低决策顾虑。<br>
@@ -505,34 +583,43 @@
 
                 <div class="adv-card">
                     <span class="adv-tag">Project 02</span>
-                    <h3 class="adv-title">moto X70 Air 系列</h3>
+                    <h3 class="adv-title">moto X70 Air 轻薄新旗舰</h3>
                     <div class="adv-desc">对标苹果/荣耀Air机型，主打“极致轻薄不妥协”的直板旗舰，锚定新中产职场精英。</div>
                     <div class="adv-strategy">
-                        <span class="strategy-pill-title">策略核心：高端认知的“轻量化”转译</span>
+                        <span class="strategy-pill-title">策略核心：物理层讲轻薄，心理层讲“减负”，外显职场精英“高效率轻姿态”的价值主张。</span>
                         <strong>① 差异化定位：</strong>推导“轻巧出发”核心策略，将轻薄与高效率办公深度绑定；<br>
-                        <strong>② 认知破局：</strong>打造系列场景短片，通过硬核测评破解用户对轻薄机型续航/影像的担忧点；<br>
+                        <strong>② 认知破局：</strong>打造“轻薄不妥协”系列场景短片，通过硬核测评破解用户对轻薄机型续航/影像的担忧点；<br>
                         <strong>③ 业务价值：</strong>用户搜索U1打超目标150%，成为近两年首发销量表现最佳的直板机型。
                     </div>
                     <div class="project-slider-container">
+                        <div class="project-slider-item"><img src="推导页03.png" alt="态度推导"></div>
+                        <div class="project-slider-item"><img src="推导页02.png" alt="moto X70 Air产品态度"></div>
+                        <div class="project-slider-item"><img src="发布会创意01.png" alt="magic moment创意"></div>
+                         <div class="project-slider-item"><img src="zlh红气球.jpg" alt="代言人magic moment"></div>
+                        <div class="project-slider-item"><img src="推导总结页.png" alt="轻巧是态度，轻薄不妥协（包装总结页）"></div>
                         <div class="project-slider-item"><img src="续航实测视频.png" alt="moto X70 Air 24小时不间断续航"></div>
                         <div class="project-slider-item"><img src="影像第二现场.png" alt="moto X70 Air 影像pk第二现场"></div>
-                        <div class="project-slider-item"><img src="推导页02.png" alt="moto X70 Air产品态度"></div>
                     </div>
                 </div>
 
                 <div class="adv-card">
                     <span class="adv-tag">Project 03</span>
-                    <h3 class="adv-title">moto razr fold / 拯救者 Y70 系列</h3>
-                    <div class="adv-desc">面向科技极客与电竞玩家，主打拯救者生态闭环及端游级串流方案。</div>
+                    <h3 class="adv-title">拯救者游戏手机 Y70 新一代</h3>
+                    <div class="adv-desc">面向科技极客与电竞玩家，主打拯救者生态闭环及端游串流方案。</div>
                     <div class="adv-strategy">
-                        <span class="strategy-pill-title">策略核心：存量粉丝的“生态共振”</span>
-                        <strong>① 精准触达：</strong>推出“先行者”体验计划，借力LGTI小程序，低成本激活高质量种子用户；<br>
-                        <strong>② 圈层渗透：</strong>撬动拯救者PC粉丝群，触达核心电竞受众30万+，将PC品牌忠诚度平移至手机；<br>
-                        <strong>③ 社群裂变：</strong>迅速完成5000+核心私域蓄水，实现从流量触达到业务转化的快速闭环。
+                        <span class="strategy-pill-title">策略核心：做好生态内转化，复用拯救者PC存量粉丝资产。</span>
+                        <strong>① 精准触达：</strong>包装同宗同源，发布会主讲人、博主、社交阵地、社群等资源高度协同，优先拉拢拯救者PC粉丝，将PC品牌忠诚度平移至手机；<br>
+                        <strong>② 圈层渗透：</strong>品牌全家桶赞助VCT_CN占位头部赛事，联动BLG战队做电竞叙事，以#瓦是大学生#为切口打入校园电竞场景； <br>
+                        <strong>③ 社群裂变：</strong>推出“先行者”体验计划，借力LGTI小程序，低成本激活高质量种子用户，迅速完成5000+核心私域蓄水，实现从流量触达到业务转化的快速闭环。
                     </div>
                     <div class="project-slider-container">
-                        <div class="project-slider-item"><img src="发布会串流.jpg" alt="Y70发烧友核心场景"></div>
                         <div class="project-slider-item"><img src="策略推导02.png" alt="Y70新一代回归：拯救者宇宙绑定"></div>
+                        <div class="project-slider-item"><img src="Y70功能场景1.jpg" alt="功能物料"></div>
+                        <div class="project-slider-item"><img src="发布会andy.jpg" alt="发布会同宗同源"></div>
+                        <div class="project-slider-item"><img src="发布会串流.jpg" alt="Y70发烧友核心场景"></div>
+                        <div class="project-slider-item"><img src="博主资源协同.png" alt="B站博主资源协同"></div>
+                        <div class="project-slider-item"><img src="瓦赛事.jpg" alt="瓦赛事全家桶"></div>
+                        <div class="project-slider-item"><img src="战队资源.jpg" alt="BLG战队叙事"></div>
                         <div class="project-slider-item"><img src="先行者计划-one page.jpg" alt="先行者体验计划：种子用户激活"></div>
                     </div>
                 </div>
@@ -547,9 +634,9 @@
                     <div class="method-index">01</div>
                     <div class="method-content">
                         <div class="method-title">✨ 技术语言 → 消费者可知可感的卖点转译</div>
-                        <p style="font-size: 0.95rem; font-weight: 500;">产品卖点包装能力：建立“USP+”方法论，打通从研发技术文档到产品经理卖点指南的转化路径。</p>
+                        <p style="font-size: 0.95rem; font-weight: 500;">产品卖点包装能力：建立“USP+”方法论，打通从研发技术deck、PM-offering guide到市场语言的转化路径。</p>
                         <div class="method-placeholder">
-                            将硬核参数（如屏幕尺寸、铰链寿命）转化为消费者可感知的利益点（如“合拍更自由”、“耐用超合拍”），实现产品语言与市场语言的无缝衔接。
+                            将razr系列的硬核参数（如屏幕尺寸、铰链寿命、SMT封装精密度）转化为消费者可感知的利益点“外屏也是主力机”“7年折叠无忧”“行业领先制程，整机性能稳定，杜绝故障频发”，实现产品语言与市场语言的无缝衔接。
                         </div>
                     </div>
                 </div>
@@ -568,10 +655,10 @@
                 <div class="method-item">
                     <div class="method-index">03</div>
                     <div class="method-content">
-                        <div class="method-title">🔍 用户洞察机制</div>
+                        <div class="method-title">🔍 用户洞察机制：不止做包装，还得做定义，不止管发布，还得管体验</div>
                         <p style="font-size: 0.95rem; font-weight: 500;">结合大数据与深访，捕捉真实痛点。</p>
                         <div class="method-placeholder">
-                            通过原声跟踪发现air机型续航隐忧，针对性打造“24h不间断续航挑战”实测。
+                         面对面工作坊：带着洞察和用户原话，和研发/设计一起battle优先级（案例：X70 Air的“轻 ≠ 妥协”，如果不是营销提前介入，研发可能会把轻薄做成阉割版）；X70 Air Pro上市通过原声跟踪发现air机型续航隐忧，针对性打造“24h不间断续航挑战”实测；搭建真实用户VOC系统：社交媒体舆情+电商评价+客服记录+社群反馈，周度扫描；体验闭环机制：高频痛点→周报同步产品团队→下个版本或OTA修复→用户回访验证
                         </div>
                     </div>
                 </div>
@@ -579,10 +666,10 @@
                 <div class="method-item">
                     <div class="method-index">04</div>
                     <div class="method-content">
-                        <div class="method-title">🎬 核心物料制作</div>
-                        <p style="font-size: 0.95rem; font-weight: 500;">培养in-house团队，把控全局美学调性。</p>
+                        <div class="method-title">🎬 核心物料制作：以in-house团队为圆心，建立“美学调性统一×产出高效可控”的全链路物料中台。</div>
+                        <p style="font-size: 0.95rem; font-weight: 500;">1、打造核心把控力，培养关键接口人；2、持续输入AIGC前沿技术；3、用物料日历倒推资源、倒推产能和风险。</p>
                         <div class="method-placeholder">
-                            建立高效产出机制，确保全渠道物料从KV、TVC到种草视频的视觉一致性。
+                            越是靠近执行，越需要有实践过的真知灼见，例如：下需求前对清楚目的和应用场景，创意前定义好checklist，范围内不许动，范围外自由发挥；每周“AIGC扫盲时间”，重点是“这周什么能用”，把AI嵌入工作流；物料提前预埋“缓冲期”，拍摄“一鱼多吃”降本，单次拍摄规划多种物料；
                         </div>
                     </div>
                 </div>
@@ -590,10 +677,10 @@
                 <div class="method-item">
                     <div class="method-index">05</div>
                     <div class="method-content">
-                        <div class="method-title">📱 阵地运营</div>
-                        <p style="font-size: 0.95rem; font-weight: 500;">多位一体矩阵协同，实现全链路跨越。</p>
+                        <div class="method-title">📱 阵地经营：从官方阵地到衍生账号，品牌曝光到兴趣电商，官号到投放，都拿到过结果</div>
+                        <p style="font-size: 0.95rem; font-weight: 500;">以资源排布策略为核心，以平台差异化为抓手，把官方阵地从“发稿渠道”升级为“人群资产沉淀池”。</p>
                         <div class="method-placeholder">
-                            根据平台特性（小红书种草/B站解构）拆解形态，确保品效合一。
+                            子弹有限，怎么排布资源是重点，要看目标，看“产品-平台-人群”的契合度，同一款产品在不同阶段，资源重心也不一样。官方账号不是“发稿渠道”，是“人群资产沉淀池”， 每个平台的“官方号人设”不一样，不搞一刀切。主号做品牌调性，衍生号做“更野”的内容，比如主号发产品，衍生号发拍摄花絮、员工日常、AIGC实验，衍生号涨粉更快，还能反哺主号。
                         </div>
                     </div>
                 </div>

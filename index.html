@@ -185,7 +185,8 @@
 
         .about-photo-wrapper {
             width: 100%;
-            aspect-ratio: 1/1.2;
+            /* ⬇️ 这里改成了 1/1 正方形，图片会自动和右侧文本等高对齐 */
+            aspect-ratio: 1/1; 
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 4px;
@@ -504,6 +505,7 @@
         <div class="nav-container">
        <div class="logo">高玮苹 Kayden</div>
             <nav>
+                <a href="#about">About Me</a>
                 <a href="#advantages">项目介绍</a>
                 <a href="#methodology">方法论心得</a>
                 <a href="#contact">联系我</a>
@@ -543,10 +545,10 @@
                 </div>
                 <div class="about-content">
                     <ul class="about-list">
-                        <li><span>📍</span> 广东江门人，自大学起北漂有11个年头了🍁最喜欢的是北京的秋天</li>
+                        <li><span>📍</span> 广东江门人，自大学起北漂有11个年头了，最喜欢的是北京的秋天</li>
                         <li><span>🎓</span> 本科就读于<strong>北京语言大学</strong>汉语言文学，硕士就读于<strong>墨尔本大学</strong>文化艺术管理</li>
                         <li><span>💼</span> <strong>联想就职4年</strong>，C端数码消费，产品营销方向管培生</li>
-                        <li><span>🎾</span> 家有五猫，喜欢F1 & 游泳 & 网球🐱🎾🚗</li>
+                        <li><span>🎾</span> 家有五猫，喜欢F1 & 游泳 & 网球🐱🚗🎾</li>
                     </ul>
                     <p style="font-family: var(--font-serif); font-style: italic; color: var(--text-muted); margin-top: 1rem;">
                         “在理性的产品推导中，寻找感性的人文表达。”
@@ -558,7 +560,7 @@
         <section id="advantages">
             <h2 class="section-header">个人优势及项目介绍</h2>
             <p style="color: var(--text-muted); margin-bottom: 2.5rem; max-width: 700px;">
-                专注于智能硬件领域的新品发布整合营销，核心能力在于将硬核技术重构为高效的市场沟通语言。以下为操盘的核心项目，均以实现业务增长与用户共鸣为目标：
+                专注于智能硬件领域的新品发布整合营销，核心能力在于将硬核产品技术重构为高效的市场沟通。以下为操盘的核心项目，均以实现业务增长与用户共鸣为目标：
             </p>
 
             <div class="advantages-grid">

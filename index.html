@@ -177,12 +177,17 @@
            新板块：About Me 样式
            ========================================================================== */
         .about-grid {
-            display: grid;
-            grid-template-columns: 350px 1fr;
-            gap: 4rem;
-            align-items: start;
-        }
-
+        display: grid;
+        grid-template-columns: 350px 1fr;
+        gap: 4rem;
+        align-items: stretch; /* 🔍 核心修改：让左右两侧高度强行绝对等高 */
+       }
+        .about-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; /* 🔍 核心修改：让列表和底部的金句分别贴紧顶端和底端 */
+        height: 100%; /* 撑满与左边正方形同等的高度 */
+       }
         .about-photo-wrapper {
             width: 100%;
             /* ⬇️ 这里改成了 1/1 正方形，图片会自动和右侧文本等高对齐 */
@@ -539,7 +544,7 @@
             <h2 class="section-header">About Me!</h2>
             <div class="about-grid">
                 <div class="about-photo-wrapper">
-                    <img src="Kayden个人照片01.jpg" alt="Kayden's Life" id="aboutPhoto">
+                    <img src="Kayden个人照片02.jpg" alt="Kayden's Life" id="aboutPhoto">
                     <div style="position:absolute; color:rgba(0,0,0,0.2); font-size:0.8rem; text-align:center; padding:1rem; pointer-events:none;">
                     </div>
                 </div>
@@ -548,10 +553,12 @@
                         <li><span>📍</span> 广东江门人，自大学起北漂有11个年头了，最喜欢的是北京的秋天</li>
                         <li><span>🎓</span> 本科就读于<strong>北京语言大学</strong>汉语言文学，硕士就读于<strong>墨尔本大学</strong>文化艺术管理</li>
                         <li><span>💼</span> <strong>联想就职4年</strong>，C端数码消费，产品营销方向管培生</li>
-                        <li><span>🎾</span> 家有五猫，喜欢F1 & 游泳 & 网球🐱🚗🎾</li>
+                        <li><span>🐱</span> 家有五猫，喜欢F1 & 游泳 & 网球 </li>
+                        <li><span>🌠</span> 我坚信，好的营销不是消耗产品，而是放大产品。期待与一个尊重“好产品”的团队并肩，把更酷的产品，用更对的方式，交到懂它的人手里。 </li>
+                        
                     </ul>
                     <p style="font-family: var(--font-serif); font-style: italic; color: var(--text-muted); margin-top: 1rem;">
-                        “在理性的产品推导中，寻找感性的人文表达。”
+                        “遵循商业规则，在理性的产品推导中，寻找感性的人文价值表达。”
                     </p>
                 </div>
             </div>

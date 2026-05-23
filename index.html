@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="cattie.png" type="image/png">
     <title>高玮苹 Kayden | 产品营销个人作品集</title>
+    <link rel="icon" href="cattie.png" type="image/png">
     <style>
         /* ==========================================================================
-           视觉风格参考：摄影作品集感、高级留白、柔和中性色调、现代衬线与无衬线搭配
+           视觉风格：摄影作品集感、高级留白、柔和中性色调、现代衬线与无衬线搭配
            ========================================================================== */
         :root {
             --bg-color: #f4f0eb;        /* 柔和的大地色/米杏色底色 */
@@ -59,12 +59,25 @@
             align-items: center;
         }
 
+        /* 升级后的图文组合 LOGO */
         .logo {
-            font-family: var(--font-serif);
-            font-size: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .logo-img {
+            height: 32px;
+            width: 32px;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-family: var(--font-sans);
             font-weight: 700;
-            letter-spacing: 1px;
+            font-size: 1.2rem;
             color: var(--accent-red);
+            letter-spacing: 1px;
         }
 
         nav a {
@@ -254,6 +267,7 @@
             border-left: 2px solid var(--accent-red);
             line-height: 1.6;
             flex-grow: 1;
+            margin-bottom: 1.5rem; /* 为底部的滑动图片留出呼吸间距 */
         }
 
         .strategy-pill-title {
@@ -262,6 +276,43 @@
             margin-bottom: 0.6rem;
             color: var(--accent-red);
             font-size: 0.95rem;
+        }
+
+        /* 新增：可滑动 Banner 位样式 */
+        .project-slider-container {
+            width: 100%;
+            overflow-x: auto;
+            display: flex;
+            gap: 0.8rem;
+            padding-bottom: 0.5rem;
+            /* 隐藏滚动条（Firefox） */
+            scrollbar-width: none; 
+        }
+
+        /* 隐藏滚动条（Chrome/Safari） */
+        .project-slider-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .project-slider-item {
+            flex: 0 0 85%; /* 电脑与手机端都展现完美的下一张露出暗示 */
+            height: 140px;
+            border-radius: 4px;
+            overflow: hidden;
+            background-color: #eae5df;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .project-slider-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s;
+        }
+
+        .project-slider-item:hover img {
+            transform: scale(1.05);
         }
 
         /* 方法论 */
@@ -395,7 +446,19 @@
 
     <header>
         <div class="nav-container">
-          <div class="logo">高玮苹 Kayden</div>
+            <div class="logo">
+                <svg class="logo-img" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 8h2v2h-2V8zm2 2h2v6h-2v-6zm-4 6h2v6h-2v-6zm6-4h2v6h-2v-6zm2 6h2v4h-2v-4zm-8 4h2v2h-2v-2zm12-10h2v2h-2v-2z" fill="#00f0ff" opacity="0.7"/>
+                    <path d="M14 6h2v2h-2V6zm2 2h2v6h-2V8zm-4 6h2v6h-2v-6zm6-4h2v6h-2v-6zm2 6h2v4h-2v-4zm-8 4h2v2h-2v-2zm12-10h2v2h-2v-2z" fill="#ff007f" opacity="0.7"/>
+                    <path d="M13 7h2v2h-2V7zm2 2h2v6h-2V9zm-4 6h2v6h-2v-6zm6-4h2v6h-2v-6zm2 6h2v4h-2v-4zm-8 4h2v2h-2v-2zm12-10h2v2h-2v-2z" fill="#1a1a1a"/>
+                    <circle cx="14" cy="11" r="1" fill="#fff"/>
+                    <circle cx="16" cy="11" r="1" fill="#fff"/>
+                    <rect x="6" y="12" width="2" height="2" fill="#ffb703"/>
+                    <rect x="24" y="15" width="2" height="2" fill="#2196f3"/>
+                    <rect x="20" y="8" width="2" height="2" fill="#ff5722"/>
+                </svg>
+                <span class="logo-text">高玮苹 Kayden</span>
+            </div>
             <nav>
                 <a href="#advantages">项目介绍</a>
                 <a href="#methodology">方法论心得</a>
@@ -411,7 +474,7 @@
         </div>
         
         <div class="hero-banner-image-wrapper">
-            <img src="Banner2.jpg" alt="Kayden Product Marketing Portfolio Banner" id="bannerImg">
+            <img src="banner2.jpg" alt="Kayden Product Marketing Portfolio Banner" id="bannerImg">
         </div>
 
         <div class="hero-meta-bar">
@@ -441,9 +504,14 @@
                         <span class="strategy-pill-title">策略核心：3-6K价位段“个性彰显”</span>
                         以“个性彰显”为核心策略，精准分层触达不同能力的女性客群。围绕“超合拍”心智构建三大支柱：<br>
                         <strong>① 时尚单品：</strong>打造“OOTD超合拍”，绑定高频穿搭场景；<br>
-                        <strong>② 影像神器：</strong>首发外屏主摄手势功能，定义“合拍”新玩法；<br>
+                        <strong>② 合拍神器：</strong>外屏主摄广角手势自拍，定义“合拍”新玩法；<br>
                         <strong>③ 品质信任：</strong>强化“耐用超合拍”口碑，有效降低决策顾虑。<br>
                         实现从颜值吸引、功能种草到信任转化的完整链路。
+                    </div>
+                    <div class="project-slider-container">
+                        <div class="project-slider-item"><img src="ootd页.jpg" alt="razr 60 = ootd好搭子"></div>
+                        <div class="project-slider-item"><img src="合拍页.jpg" alt="razr 60 = 合拍影像神器"></div>
+                        <div class="project-slider-item"><img src="超合拍one page.jpg" alt="核心物料示意"></div>
                     </div>
                 </div>
 
@@ -453,9 +521,14 @@
                     <div class="adv-desc">对标苹果/荣耀Air机型，主打“极致轻薄不妥协”的直板旗舰，锚定新中产职场精英。</div>
                     <div class="adv-strategy">
                         <span class="strategy-pill-title">策略核心：高端认知的“轻量化”转译</span>
-                        <strong>① 差异化定位：</strong>推导“轻装出发”核心策略，将轻薄与高效率办公深度绑定；<br>
+                        <strong>① 差异化定位：</strong>推导“轻巧出发”核心策略，将轻薄与高效率办公深度绑定；<br>
                         <strong>② 认知破局：</strong>打造系列场景短片，通过硬核测评破解用户对轻薄机型续航/影像的担忧点；<br>
                         <strong>③ 业务价值：</strong>用户搜索U1打超目标150%，成为近两年首发销量表现最佳的直板机型。
+                    </div>
+                    <div class="project-slider-container">
+                        <div class="project-slider-item"><img src="续航实测视频.png" alt="moto X70 Air 24小时不间断续航"></div>
+                        <div class="project-slider-item"><img src="影像第二现场.png" alt="moto X70 Air 影像pk第二现场"></div>
+                        <div class="project-slider-item"><img src="推导页02.png" alt="moto X70 Air产品态度"></div>
                     </div>
                 </div>
 
@@ -465,9 +538,14 @@
                     <div class="adv-desc">面向科技极客与电竞玩家，主打拯救者生态闭环及端游级串流方案。</div>
                     <div class="adv-strategy">
                         <span class="strategy-pill-title">策略核心：存量粉丝的“生态共振”</span>
-                        <strong>① 精准触达：</strong>联动LGTI游戏小程序，推出“先行者”体验计划，低成本激活高质量种子用户；<br>
-                        <strong>② 圈层渗透：</strong>深度经营拯救者PC粉丝群，触达核心电竞受众30万+，将 PC 品牌忠诚度平移至手机；<br>
-                        <strong>③ 社群裂变：</strong>迅速完成 6000 人核心私域蓄水，实现从流量触达到业务转化的快速闭环。
+                        <strong>① 精准触达：</strong>推出“先行者”体验计划，借力LGTI小程序，低成本激活高质量种子用户；<br>
+                        <strong>② 圈层渗透：</strong>撬动拯救者PC粉丝群，触达核心电竞受众30万+，将PC品牌忠诚度平移至手机；<br>
+                        <strong>③ 社群裂变：</strong>迅速完成5000+核心私域蓄水，实现从流量触达到业务转化的快速闭环。
+                    </div>
+                    <div class="project-slider-container">
+                        <div class="project-slider-item"><img src="发布会串流.jpg" alt="Y70发烧友核心场景"></div>
+                        <div class="project-slider-item"><img src="策略推导02.png" alt="Y70新一代回归：拯救者宇宙绑定"></div>
+                        <div class="project-slider-item"><img src="先行者计划-one page.jpg" alt="先行者体验计划：种子用户激活"></div>
                     </div>
                 </div>
             </div>
@@ -475,15 +553,15 @@
 
 
         <section id="methodology">
-            <h2 class="section-header">项目经历与方法论心得</h2>
+            <h2 class="section-header">方法论心得</h2>
             <div class="methodology-list">
                 <div class="method-item">
                     <div class="method-index">01</div>
                     <div class="method-content">
                         <div class="method-title">✨ 技术语言 → 消费者可知可感的卖点转译</div>
-                        <p style="font-size: 0.95rem; font-weight: 500;">拒绝生硬参数，提炼技术背后的真实体验改良。</p>
+                        <p style="font-size: 0.95rem; font-weight: 500;">产品卖点包装能力：建立“USP+”方法论，打通从研发技术文档到产品经理卖点指南的转化路径。</p>
                         <div class="method-placeholder">
-                            在razr 60发布中，将“主摄手势抓拍”转译为“AI自由，超合拍”的情感化场景。
+                            将硬核参数（如屏幕尺寸、铰链寿命）转化为消费者可感知的利益点（如“合拍更自由”、“耐用超合拍”），实现产品语言与市场语言的无缝衔接。
                         </div>
                     </div>
                 </div>
@@ -491,10 +569,10 @@
                 <div class="method-item">
                     <div class="method-index">02</div>
                     <div class="method-content">
-                        <div class="method-title">🎯 新品策略推导</div>
-                        <p style="font-size: 0.95rem; font-weight: 500;">从行业大盘与竞品死角寻找破局点。</p>
+                        <div class="method-title">🎯 新品策略推导：从行业大盘与竞品死角寻找破局点</div>
+                        <p style="font-size: 0.95rem; font-weight: 500;">差异化定位能力：“破局点三维定位法”（行业大盘扫描 + 竞品死角洞察 + 用户痛点交叉），完成从模糊机会到清晰策略的推导。</p>
                         <div class="method-placeholder">
-                            主导三阶段蓄水打法（悬念-爆破-长尾），精准卡位核心认知空档。
+                            分析主流竞品（Redmi Note、vivo Y等系列），交叉验证目标客群（务工青年、长辈用户、备用机刚需者）的核心诉求排序为：续航＞屏幕护眼＞抗摔耐用。跳出千元机“性价比参数战”，锚定 “超续航、超好屏、超抗造” 三大用户核心换机驱动力，将g100 Pro定位为 “千元档闭眼入的安心之选” 
                         </div>
                     </div>
                 </div>
@@ -505,7 +583,7 @@
                         <div class="method-title">🔍 用户洞察机制</div>
                         <p style="font-size: 0.95rem; font-weight: 500;">结合大数据与深访，捕捉真实痛点。</p>
                         <div class="method-placeholder">
-                            通过原声跟踪发现大折叠续航隐忧，针对性开展“全天续航无焦虑”实测。
+                            通过原声跟踪发现air机型续航隐忧，针对性打造“24h不间断续航挑战”实测。
                         </div>
                     </div>
                 </div>
@@ -516,7 +594,7 @@
                         <div class="method-title">🎬 核心物料制作</div>
                         <p style="font-size: 0.95rem; font-weight: 500;">培养in-house团队，把控全局美学调性。</p>
                         <div class="method-placeholder">
-                            建立高效产出机制，确保全渠道物料从KV到短视频的视觉一致性。
+                            建立高效产出机制，确保全渠道物料从KV、TVC到种草视频的视觉一致性。
                         </div>
                     </div>
                 </div>
